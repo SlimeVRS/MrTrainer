@@ -65,6 +65,21 @@ lower_case(X,Y) :-
 
 lower_case(X,Y).
 
+% read_line(String)
+% reads a line as a list of ASCII codes
+
+read_line(String) :-
+    get0(FirstChar),
+    lower_case(FirstChar,LChar),
+    read_line_aux(LChar,String).
+
+read_line_aux(10,[]) :- !.
+
+read_line_aux(-1,[]) :- !.
+
+read_line_aux(LChar, [LChar|Rest]) :-
+    read_line(Rest).
+
 % extract_word(String,Rest,Word)
 % Gets the first word of String, Rest is the residual part of the string
 % Word is a continuous letters or a series of digits
