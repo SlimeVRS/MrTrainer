@@ -154,9 +154,9 @@ illness(['no'|S],S).
 illness(['No'|S],S).
 
 % All posible sports of the user
-level('principiante',['0'.'1'.'2']).
-level('intermedio',['3'.'4']).
-level('avanzado',['5'.'6'.'7']).
+level('principiante',['0','1','2']).
+level('intermedio',['3','4']).
+level('avanzado',['5','6','7']).
 
 % All posible greetings of the user
 greeting(['hola'|S],S).
