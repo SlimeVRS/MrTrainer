@@ -1,5 +1,5 @@
 begin:-
-    read_string(input, '\n', ',',_,Q),
+    read_string(user_input, '\n', '.',_,Q),
     string_lower(Q,Lowercase),
     atomic_list_concat(List,' ',Lowercase),
     startConversationAux(List,[]).
@@ -28,7 +28,7 @@ startConversationAux(List,[]):-
 
 userSport(Sport):-
     write("Hola!!! Como estas? \n Te gustaria empezar a entrenar?"), nl,
-    read_string(input, '\n', ',', _, Q),
+    read_string(user_input, '\n', '.', _, Q),
     string_lower(Q,Lowercase),
     atomic_list_concat(List,' ',Lowercase),
     getSport(List,[],Sport).
@@ -40,7 +40,7 @@ userSport(Sport):-
 
 userSportAux(Sport):-
     write("Te gustaria empezar a entrenar?"), nl,
-    read_string(input, '\n', ',', _, Q),
+    read_string(user_input, '\n', '.', _, Q),
     string_lower(Q,Lowercase),
     atomic_list_concat(List,' ',Lowercase),
     getSport(List,[],Sport).
@@ -65,14 +65,14 @@ getSport(List,Empty,Sport):-
     atomics_to_string(Rest,Sport).
 
 listSports(SportSelected):-
-    read_string(input, '\n', ',', _, Q),
+    read_string(user_input, '\n', '.', _, Q),
     string_lower(Q,SportSelected),
     atomic_list_concat(Sport, ' ',SportSelected),
     sport(Sport,Empty).
 
 userIllness(Illness):-
     write("Has tenido alguna patologia que te impida hacer ejercicio con normalidad? \n"), nl,
-    read_string(input, '\n', ',', _, Q),
+    read_string(user_input, '\n', '.', _, Q),
     string_lower(Q,Lowercase),
     atomic_list_concat(List,' ', Lowercase),
     getIllness(List,[],Illness).
@@ -102,14 +102,14 @@ illnessList(Illness):-
     \t - Problemas de columna \n
     \t - Asmatico \n
     \t - Ninguno"), nl,
-    read_string(input, '\n', ',', _, Q),
+    read_string(user_input, '\n', '.', _, Q),
     string_lower(Q,Lowercase),
     atomic_list_concat(Illness, ' ',Lowercase),
     illness(Illness,Empty).
 
 userLevel(Level):-
     write("Que tan frecuente practicas deporte?"), nl,
-    read_string(input, '\n', ',', _,Q),
+    read_string(user_input, '\n', '.', _,Q),
     sub_atom(Q,0,1,After,Days),
     getLevel(Level,Days).
 
@@ -154,9 +154,9 @@ illness(['no'|S],S).
 illness(['No'|S],S).
 
 % All posible sports of the user
-level('principiante',['0','1','2']).
-level('intermedio',['3','4']).
-level('avanzado',['5','6','7']).
+level('principiante',['0'.'1'.'2']).
+level('intermedio',['3'.'4']).
+level('avanzado',['5'.'6'.'7']).
 
 % All posible greetings of the user
 greeting(['hola'|S],S).
